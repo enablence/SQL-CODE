@@ -1,0 +1,54 @@
+SELECT title, score
+FROM hacker_news
+ORDER BY score DESC
+LIMIT 5;
+
+SELECT SUM(score)
+FROM hacker_news;
+
+Select user, SUM(score)
+From hacker_news
+Group by user
+Having SUM(score) > 200
+Order by 2 Desc;
+
+Select (517 + 309 + 304 + 282) / 6366.0;
+
+Select user,
+  count(*)
+From hacker_news
+Where url like '%watch?v=dQw4w9WgXcQ%'
+Group by 1
+Order by 2 desc;
+
+Select CASE
+  When url like '%github.com%' then 'Github'
+  When url like '%medium.com%' then 'Medium'
+  When url like '%nytimes.com%' then 'New York Times'
+  End as 'source',
+  Count(*)
+From hacker_news
+Group by 1;
+
+Select timestamp
+From hacker_news
+Limit 10;
+
+Select timestamp,
+  strftime('%H', timestamp)
+From hacker_news
+Group by 1
+Limit 20;
+
+Select strftime('%H', timestamp) as 'Time Slot',
+  Round(avg(score)) as 'Average Score',
+  Count(*) as 'Total # of Stories'
+From hacker_news
+Where timestamp is not null
+Group by 1
+Order by 1;
+
+
+
+
+
